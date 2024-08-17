@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 using NUnit.Framework;
-using LibraryApp.Models;
+using dotnetapp.Models;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http;
 
-namespace LibraryApp.Tests
+namespace dotnetapp.Tests
 {
     [TestFixture]
     public class LibraryTests
@@ -41,8 +41,8 @@ namespace LibraryApp.Tests
         public void TestBook_ClassExists()
         {
             // Load the assembly at runtime
-            Assembly assembly = Assembly.Load("LibraryApp");
-            Type bookType = assembly.GetType("LibraryApp.Models.Book");
+            Assembly assembly = Assembly.Load("dotnetapp");
+            Type bookType = assembly.GetType("dotnetapp.Models.Book");
             Assert.NotNull(bookType, "Book class does not exist.");
         }
 
@@ -50,8 +50,8 @@ namespace LibraryApp.Tests
         public void TestAuthor_ClassExists()
         {
             // Load the assembly at runtime
-            Assembly assembly = Assembly.Load("LibraryApp");
-            Type authorType = assembly.GetType("LibraryApp.Models.Author");
+            Assembly assembly = Assembly.Load("dotnetapp");
+            Type authorType = assembly.GetType("dotnetapp.Models.Author");
             Assert.NotNull(authorType, "Author class does not exist.");
         }
 
@@ -59,8 +59,8 @@ namespace LibraryApp.Tests
         public void TestGenre_ClassExists()
         {
             // Load the assembly at runtime
-            Assembly assembly = Assembly.Load("LibraryApp");
-            Type genreType = assembly.GetType("LibraryApp.Models.Genre");
+            Assembly assembly = Assembly.Load("dotnetapp");
+            Type genreType = assembly.GetType("dotnetapp.Models.Genre");
             Assert.NotNull(genreType, "Genre class does not exist.");
         }
 
@@ -68,8 +68,8 @@ namespace LibraryApp.Tests
         public void TestMember_ClassExists()
         {
             // Load the assembly at runtime
-            Assembly assembly = Assembly.Load("LibraryApp");
-            Type memberType = assembly.GetType("LibraryApp.Models.Member");
+            Assembly assembly = Assembly.Load("dotnetapp");
+            Type memberType = assembly.GetType("dotnetapp.Models.Member");
             Assert.NotNull(memberType, "Member class does not exist.");
         }
 
@@ -77,8 +77,8 @@ namespace LibraryApp.Tests
         public void TestLoan_ClassExists()
         {
             // Load the assembly at runtime
-            Assembly assembly = Assembly.Load("LibraryApp");
-            Type loanType = assembly.GetType("LibraryApp.Models.Loan");
+            Assembly assembly = Assembly.Load("dotnetapp");
+            Type loanType = assembly.GetType("dotnetapp.Models.Loan");
             Assert.NotNull(loanType, "Loan class does not exist.");
         }
 
@@ -86,16 +86,16 @@ namespace LibraryApp.Tests
         public void TestLibraryDbContext_ClassExists()
         {
             // Load the assembly at runtime
-            Assembly assembly = Assembly.Load("LibraryApp");
-            Type dbContextType = assembly.GetType("LibraryApp.Models.LibraryDbContext");
+            Assembly assembly = Assembly.Load("dotnetapp");
+            Type dbContextType = assembly.GetType("dotnetapp.Models.LibraryDbContext");
             Assert.NotNull(dbContextType, "LibraryDbContext class does not exist.");
         }
 
         [Test]
         public void TestLoanDatePropertyType_Loan_Table()
         {
-            Assembly assembly = Assembly.Load("LibraryApp");
-            _entityType = assembly.GetType("LibraryApp.Models.Loan");
+            Assembly assembly = Assembly.Load("dotnetapp");
+            _entityType = assembly.GetType("dotnetapp.Models.Loan");
             PropertyInfo loanDateProperty = _entityType.GetProperty("LoanDate");
             Assert.NotNull(loanDateProperty, "Loan LoanDate property does not exist.");
             Assert.AreEqual(typeof(DateTime), loanDateProperty.PropertyType, "Loan LoanDate property should be of type DateTime.");
@@ -104,8 +104,8 @@ namespace LibraryApp.Tests
         [Test]
         public void TestPublicationDatePropertyType_Book_Table()
         {
-            Assembly assembly = Assembly.Load("LibraryApp");
-            _entityType = assembly.GetType("LibraryApp.Models.Book");
+            Assembly assembly = Assembly.Load("dotnetapp");
+            _entityType = assembly.GetType("dotnetapp.Models.Book");
             PropertyInfo publicationDateProperty = _entityType.GetProperty("PublicationDate");
             Assert.NotNull(publicationDateProperty, "Book PublicationDate property does not exist.");
             Assert.AreEqual(typeof(DateTime), publicationDateProperty.PropertyType, "Book PublicationDate property should be of type DateTime.");
@@ -114,7 +114,7 @@ namespace LibraryApp.Tests
         [Test]
         public void TestMigrationExists()
         {
-            bool migrationsFolderExists = Directory.Exists(@"/home/coder/project/workspace/LibraryApp/Migrations");
+            bool migrationsFolderExists = Directory.Exists(@"/home/coder/project/workspace/dotnetapp/Migrations");
             Assert.IsTrue(migrationsFolderExists, "Migrations folder does not exist.");
         }
 
